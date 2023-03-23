@@ -1,0 +1,38 @@
+<html>
+  <head>
+
+  </head>
+
+  <body>
+    <div>
+      <form>
+        <label for="description">Task</label>
+        <input type="text" name="description" id="description" required>
+        <input type="submit" value="Add">
+      </form>
+    </div>
+
+    <div>
+        <ul>
+        {% for task in tasks_todo %}
+          <li id="task_{{ task.id }}">{% include 'tasks/task_inline.html' %}</li>
+        {% empty %}
+          <li>0 tasks to do!</li>
+        {% endfor %}
+        </ul>
+      <hr>
+        <ul>
+        {% for task in tasks_done %}
+          <li>{{ task.description }} <a href="">Edit</a> <a href="">Done</a></li>
+        {% empty %}
+          <li>0 tasks done!</li>
+        {% endfor %}
+        </ul>
+    </div>
+
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/intercooler@1.2.3/dist/intercooler.js"></script>
+  </body>
+
+</html>

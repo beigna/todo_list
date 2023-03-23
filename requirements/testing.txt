@@ -1,0 +1,8 @@
+-r base.txt
+
+pytest==7.2.2
+pytest_django==4.5.2
+pytest-mock==3.10.0
+freezegun==1.2.2
+mypy==1.1.1
+django_stubs==1.15.0

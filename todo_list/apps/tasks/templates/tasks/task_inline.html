@@ -1,0 +1,3 @@
+{{ task.description }}
+<button ic-target="#task_{{ task.id }}" ic-get-from="{% url 'task_edit' task.id %}">Edit</button>
+<button ic-target="#task_{{ task.id }}" ic-put-to="{% url 'task_mark_done' task.id %}">Done</button>
