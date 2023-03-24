@@ -1,0 +1,15 @@
+<ul>
+{% for task in tasks_todo %}
+  <li id="task_{{ task.id }}">{% include 'tasks/task_inline.html' %}</li>
+{% empty %}
+  <li>0 tasks to do!</li>
+{% endfor %}
+</ul>
+<hr>
+<ul>
+{% for task in tasks_done %}
+  <li id="task_{{ task.id }}">{% include 'tasks/task_inline.html' %}</li>
+{% empty %}
+  <li>0 tasks done!</li>
+{% endfor %}
+</ul>

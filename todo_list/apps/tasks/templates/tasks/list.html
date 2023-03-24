@@ -4,35 +4,39 @@
   </head>
 
   <body>
+    <form id="csrf">{% csrf_token %}</form>
     <div>
-      <form>
+      <form ic-post-to="{% url 'task_new' %}" ic-target="#task_list" ic-include="#csrf">
         <label for="description">Task</label>
         <input type="text" name="description" id="description" required>
         <input type="submit" value="Add">
       </form>
     </div>
 
-    <div>
-        <ul>
-        {% for task in tasks_todo %}
-          <li id="task_{{ task.id }}">{% include 'tasks/task_inline.html' %}</li>
-        {% empty %}
-          <li>0 tasks to do!</li>
-        {% endfor %}
-        </ul>
-      <hr>
-        <ul>
-        {% for task in tasks_done %}
-          <li>{{ task.description }} <a href="">Edit</a> <a href="">Done</a></li>
-        {% empty %}
-          <li>0 tasks done!</li>
-        {% endfor %}
-        </ul>
+    <div id="task_list">
+      {% include 'tasks/list_partial.html' %}
     </div>
 
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="https://unpkg.com/intercooler@1.2.3/dist/intercooler.js"></script>
+    <script type="text/javascript">
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+    </script>
   </body>
 
 </html>

@@ -1,3 +1,8 @@
 {{ task.description }}
 <button ic-target="#task_{{ task.id }}" ic-get-from="{% url 'task_edit' task.id %}">Edit</button>
-<button ic-target="#task_{{ task.id }}" ic-put-to="{% url 'task_mark_done' task.id %}">Done</button>
+<button ic-target="#task_list" ic-delete-from="{% url 'task_delete' task.id %}" ic-include="#csrf">Delete</button>
+{% if task.is_done == False %}
+<button ic-target="#task_list" ic-put-to="{% url 'task_done' task.id %}" ic-include="#csrf">Done</button>
+{% else %}
+<button ic-target="#task_list" ic-put-to="{% url 'task_undone' task.id %}" ic-include="#csrf">Undone</button>
+{% endif %}
