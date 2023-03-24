@@ -22,3 +22,5 @@ Para loggear los cambios del modelo Task usaría https://django-simple-history.r
 Otra opción es utilizar las signasl de django escuchando a dicho modelo y loggeando en consecuencia.
 
 Por otro lado no se utilizan ModelForms por falta de tiempo y porque el modelo es muy simple.
+
+Para los tests no usé FactoryBoy ni Faker por cuestiones de tiempo.
