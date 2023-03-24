@@ -19,6 +19,9 @@ docker-grant: ## Grant permission on docker.sock
 docker-build-dev: ## Build the Docker development image
 	docker build -t $(APP_NAME)-dev -f Dockerfile.dev .
 
+docker-build-db: ## Start django
+	$(DOCKER_RUN_BASE) bash -c "cd $(APP_NAME) && ./manage.py migrate && ./manage.py loaddata ../fixtures/auth.json"
+
 docker-shell: ## Launch Docker shell
 	$(DOCKER_RUN_BASE)
 
